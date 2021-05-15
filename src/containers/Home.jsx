@@ -11,7 +11,7 @@ import '../assets/styles/App.scss';
 
 const API = 'http://localhost:3000/initialState';
 
-const App = () => {
+const Home = () => {
   const initialState = useInitialState(API);
   return (
     <div className='app'>
@@ -62,4 +62,4 @@ CarouselItem.propTypes = {
   duration: PropTypes.number,
 };
 
-export default App;
+export default Home;
