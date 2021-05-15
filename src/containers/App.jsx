@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
@@ -21,7 +22,10 @@ const App = () => {
         initialState.mylist.length > 0 && (
           <Categories title='Mi Lista'>
             <Carousel>
-              <CarouselItem />
+              {
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                initialState.mylist.map((item) => <CarouselItem key={item.id} {...item} />)
+              }
             </Carousel>
           </Categories>
         )
@@ -33,7 +37,6 @@ const App = () => {
             // eslint-disable-next-line react/jsx-props-no-spreading
             initialState.trends.map((item) => <CarouselItem key={item.id} {...item} />)
           }
-
         </Carousel>
       </Categories>
 
@@ -49,6 +52,14 @@ const App = () => {
       <Footer />
     </div>
   );
+};
+
+CarouselItem.propTypes = {
+  cover: PropTypes.string,
+  title: PropTypes.string,
+  year: PropTypes.number,
+  contentRaiting: PropTypes.string,
+  duration: PropTypes.number,
 };
 
 export default App;
